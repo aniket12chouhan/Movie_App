@@ -9,7 +9,6 @@ const config = {
 };
 
 export const upcomingMovie = async (pageNum) => {
-    console.log(pageNum);
     const res = await axios.get(`${API_URL}/movie/upcoming?language=en-US&page=${pageNum}`, config)
     // localStorage.setItem("upcoming", JSON.stringify(res.data))
     return res.data
@@ -20,11 +19,16 @@ export const popular = async (pageNum) => {
     return res.data
 }
 export const trending = async (pageNum) => {
-    console.log(pageNum);
     const res = await axios.get(`${API_URL}/trending/movie/day?language=en-US&page=${pageNum}`, config)
     return res.data
 }
 
+export const search = async (textsearch) => {
+    console.log(textsearch.pageNum);
+    const res = await axios.get(`${API_URL}/search/movie?query=${textsearch.query}&page=${textsearch.pageNum}`, config)
+    return res.data
+}
+// https://api.themoviedb.org/3/search/multi?query=xcxc
 // 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
 // const getTicket = async (id, token) => {

@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { popular, trending, upcomingMovie } from "./movieServies";
+import { popular, search, trending, upcomingMovie } from "./movieServies";
 
 
 
@@ -20,6 +20,7 @@ const movieSlice = createSlice({
         upcoming_movie: null,
         popular_movie: null,
         trending_movie: null,
+        search_movie: null,
         imgurl,
         isLoading: false,
         isError: false,
@@ -31,6 +32,14 @@ const movieSlice = createSlice({
                 ...state,
                 isDark: action.payload
             }
+        },
+        searchReset: (state) => {
+            return {
+                ...state,
+                search_movie: null
+
+            }
+
         }
 
     },
@@ -85,11 +94,27 @@ const movieSlice = createSlice({
                 state.isSuccess = false
                 state.isError = true
             })
+            .addCase(searchMovies.pending, state => {
+                state.isLoading = true
+            })
+            .addCase(searchMovies.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.search_movie = state.search_movie?.results ? {
+                    ...state.search_movie,
+                    results: [...state.search_movie?.results, ...action.payload.results]
+                } : action.payload
+                state.isSuccess = true
+
+            })
+            .addCase(searchMovies.rejected, state => {
+                state.isSuccess = false
+                state.isError = true
+            })
 
     }
 })
 
-export const { darkmode } = movieSlice.actions
+export const { darkmode, searchReset } = movieSlice.actions
 
 export default movieSlice.reducer
 export const upcoming = createAsyncThunk("FETCH/UP", async (pageNum) => {
@@ -114,6 +139,16 @@ export const popularMovies = createAsyncThunk("FETCH/POPULAR", async (pageNum) =
 export const trendingMovies = createAsyncThunk("FETCH/TRENDING", async (pageNum) => {
     try {
         const response = await trending(pageNum)
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+})
+
+export const searchMovies = createAsyncThunk("FETCH/SEARCH", async (textsearch) => {
+    console.log(textsearch);
+    try {
+        const response = await search(textsearch)
         return response
     } catch (error) {
         console.log(error);

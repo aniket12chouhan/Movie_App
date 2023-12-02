@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import HeroSection from './page/HeroSection'
 import Popular from './page/Popular'
 import Trending from './page/Trending'
+import Search from './page/Search'
 
 const App = () => {
   const { isDark } = useSelector(state => state.movie)
@@ -19,6 +20,7 @@ const App = () => {
             <Route path='/' element={<HeroSection />} />
             <Route path='/popular' element={<Popular />} />
             <Route path='/trending' element={<Trending />} />
+            <Route path='/search/:query' element={<Search />} />
           </Routes>
         </div>
       </div>
