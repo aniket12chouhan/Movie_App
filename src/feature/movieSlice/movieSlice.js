@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getMovie, upcomingMovie } from "./movieServies";
+import { popular, trending, upcomingMovie } from "./movieServies";
 
 
 
@@ -18,6 +18,8 @@ const movieSlice = createSlice({
         movie: "movie",
         isDark: false,
         upcoming_movie: null,
+        popular_movie: null,
+        trending_movie: null,
         imgurl,
         isLoading: false,
         isError: false,
@@ -49,6 +51,34 @@ const movieSlice = createSlice({
                 state.isSuccess = false
                 state.isError = true
             })
+            .addCase(popularMovies.pending, state => {
+                state.isLoading = true
+            })
+            .addCase(popularMovies.fulfilled, (state, action) => {
+
+                state.isLoading = false
+                state.popular_movie = action.payload
+                state.isSuccess = true
+
+            })
+            .addCase(popularMovies.rejected, state => {
+                state.isSuccess = false
+                state.isError = true
+            })
+            .addCase(trendingMovies.pending, state => {
+                state.isLoading = true
+            })
+            .addCase(trendingMovies.fulfilled, (state, action) => {
+
+                state.isLoading = false
+                state.trending_movie = action.payload
+                state.isSuccess = true
+
+            })
+            .addCase(trendingMovies.rejected, state => {
+                state.isSuccess = false
+                state.isError = true
+            })
 
     }
 })
@@ -65,7 +95,20 @@ export const upcoming = createAsyncThunk("FETCH/UP", async () => {
     }
 })
 
-export const getdata = createAsyncThunk("FETCH/DATA", async () => {
-    getMovie()
+export const popularMovies = createAsyncThunk("FETCH/POPULAR", async () => {
+    try {
+        const response = await popular()
+        return response
+    } catch (error) {
+        console.log(error);
+    }
+})
 
+export const trendingMovies = createAsyncThunk("FETCH/TRENDING", async () => {
+    try {
+        const response = await trending()
+        return response
+    } catch (error) {
+        console.log(error);
+    }
 })

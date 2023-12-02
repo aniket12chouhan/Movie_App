@@ -10,16 +10,24 @@ const config = {
 
 export const upcomingMovie = async () => {
 
-    const res = await axios.get(`${API_URL}/movie/upcoming?language=en-US`, config)
+    const res = await axios.get(`${API_URL}/movie/upcoming?language=en-US&page=1`, config)
     // localStorage.setItem("upcoming", JSON.stringify(res.data))
     return res.data
 }
-export const getMovie = async () => {
+export const popular = async () => {
 
 
-    const response = await axios.get('https://api.themoviedb.org/3/trending/movie/day?language=en-US', config)
-    console.log(response)
+    const res = await axios.get(`${API_URL}/movie/popular?language=en-US&page=1`, config)
+    return res.data
 }
+export const trending = async () => {
+
+    const res = await axios.get(`${API_URL}/trending/movie/day?language=en-US&page=1`, config)
+    console.log(res)
+    return res.data
+}
+
+// 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
 // const getTicket = async (id, token) => {
 //     // const config = {

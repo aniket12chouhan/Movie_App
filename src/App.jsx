@@ -1,22 +1,28 @@
-import React, { useEffect } from 'react'
-// import { useDispatch } from 'react-redux'
-
+import React from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Hearder from './component/Hearder'
 import { useSelector } from 'react-redux'
 import HeroSection from './page/HeroSection'
+import Popular from './page/Popular'
+import Trending from './page/Trending'
 
 const App = () => {
   const { isDark } = useSelector(state => state.movie)
-  // const dispatch = useDispatch()
 
   return (
 
-    <>
+    <BrowserRouter>
       <div className={isDark ? "" : "dark"}>
         <Hearder />
-        <HeroSection />
+        <div className='mt-12'>
+          <Routes>
+            <Route path='/' element={<HeroSection />} />
+            <Route path='/popular' element={<Popular />} />
+            <Route path='/trending' element={<Trending />} />
+          </Routes>
+        </div>
       </div>
-    </>
+    </BrowserRouter>
 
   )
 }

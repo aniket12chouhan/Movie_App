@@ -6,7 +6,7 @@ import MovieCard from '../component/MovieCard'
 
 const HeroSection = () => {
     const dispatch = useDispatch()
-    const { upcoming_movie, imgurl } = useSelector(state => state.movie)
+    const { upcoming_movie } = useSelector(state => state.movie)
 
 
     useEffect(() => {
@@ -16,12 +16,12 @@ const HeroSection = () => {
 
     return (
         <>
-            <div className="w-full  flex flex-col items-center mt-12  bg-[#EEEEEE]  text-[black]  dark:bg-[#331D2C] dark:text-white " >
+            <div className="w-full  flex flex-col items-center   bg-[#EEEEEE]  text-[black]  dark:bg-[#331D2C] dark:text-white " >
                 <div className='wrapper-container w-full'>
                     <Carousel />
-                    <hr className='my-4 dark:border-[#EEEEEE] border-[#331D2C]' />
+                    {upcoming_movie && <hr className='my-4 dark:border-[#EEEEEE] border-[#331D2C]' />}
                     <section className=''>
-                        <MovieCard upcoming_movie={upcoming_movie} title={"Upcoming"} />
+                        <MovieCard movies={upcoming_movie} title={"Upcoming"} />
                     </section>
 
                 </div>

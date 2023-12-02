@@ -1,20 +1,23 @@
 import React from 'react'
 import CardItem from '../utils/CardItem'
 
-const MovieCard = ({ upcoming_movie, title }) => {
-    return (
-        <>
-            <h1 className='pb-5 ms-2 text-2xl'>{title} Movies :-</h1>
-            <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
+const MovieCard = ({ movies, title }) => {
+    if (movies) {
+        return (
+            <>
+                <h1 className=' ms-2 text-2xl'>{title} Movies :-</h1>
+                <hr className='my-4 mb-6 dark:border-[#EEEEEE] border-[#331D2C]' />
+                <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-4">
 
-                {
-                    upcoming_movie?.results?.map((movie) => <CardItem key={movie.id} movie={movie} />)
-                }
+                    {
+                        movies?.results?.map((movie) => <CardItem key={movie.id} movie={movie} />)
+                    }
 
 
-            </div>
-        </>
-    )
+                </div>
+            </>
+        )
+    }
 }
 
 export default MovieCard

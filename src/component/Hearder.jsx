@@ -5,6 +5,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import logo from '../../public/logo/logo.webp'
 import { useDispatch } from 'react-redux';
 import { darkmode, upcoming } from '../feature/movieSlice/movieSlice';
+import { Link } from 'react-router-dom';
 const Hearder = () => {
     const dispatch = useDispatch()
     const [dark, setdark] = useState(true)
@@ -19,23 +20,23 @@ const Hearder = () => {
             <div className=" fixed top-0  z-10 w-full flex  justify-center  bg-[#EEEEEE]  text-[black]  dark:bg-[#331D2C] dark:text-white shadow-[0_3px_10px_rgb(0,0,0,0.2)]" >
                 <div className='wrapper-container w-full'>
                     <div className=" flex flex-row justify-between p-3 ">
-                        <a href="" className=" flex flex-col items-center cursor-pointer sm:w-12 w-8">
+                        <Link to={"/"} className=" flex flex-col items-center cursor-pointer sm:w-12 w-8">
                             <img className='object-contain' src={logo} alt="" />
 
-                        </a>
+                        </Link>
 
                         <nav className="flex flex-row items-center sm:text-lg font-medium text-[14px] sm:gap-8  gap-2 ">
 
-                            <a href=""
+                            <Link to={"/popular"}
                                 className="cursor-pointer mr-2 "
                             >
                                 Popular
-                            </a>
-                            <a href=""
+                            </Link>
+                            <Link to={"/trending"}
                                 className=" cursor-pointer mr-2 "
                             >
                                 Trending
-                            </a>
+                            </Link>
                             <SearchIcon />
 
                             {

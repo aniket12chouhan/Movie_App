@@ -33,7 +33,7 @@ const CardItem = ({ movie }) => {
 
 
                     </div>
-                    <div className="  md:font-bold font-semibold md:text-xl text-lg mb-1 whitespace-nowrap mt-1">{movie.title}</div>
+                    <div className="  md:font-bold font-semibold md:text-xl text-lg mb-3 whitespace-nowrap mt-1">{movie.title}</div>
                     <div className="px-1 pb-1">
                         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
                         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
