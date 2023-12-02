@@ -3,7 +3,7 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useSelector } from 'react-redux'
 import img_not from '../../public/image-not.png'
-import Loader from '../utils/loader/loader';
+import Loader from '../utils/loader/Loader';
 
 const Carousel = () => {
 
