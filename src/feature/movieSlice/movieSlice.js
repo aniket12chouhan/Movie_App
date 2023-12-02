@@ -41,9 +41,11 @@ const movieSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(upcoming.fulfilled, (state, action) => {
-
                 state.isLoading = false
-                state.upcoming_movie = action.payload
+                state.upcoming_movie = state.upcoming_movie?.results ? {
+                    ...state.upcoming_movie,
+                    results: [...state.upcoming_movie?.results, ...action.payload.results]
+                } : action.payload
                 state.isSuccess = true
 
             })
@@ -55,9 +57,11 @@ const movieSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(popularMovies.fulfilled, (state, action) => {
-
                 state.isLoading = false
-                state.popular_movie = action.payload
+                state.popular_movie = state.popular_movie?.results ? {
+                    ...state.popular_movie,
+                    results: [...state.popular_movie?.results, ...action.payload.results]
+                } : action.payload
                 state.isSuccess = true
 
             })
@@ -69,9 +73,11 @@ const movieSlice = createSlice({
                 state.isLoading = true
             })
             .addCase(trendingMovies.fulfilled, (state, action) => {
-
                 state.isLoading = false
-                state.trending_movie = action.payload
+                state.trending_movie = state.trending_movie?.results ? {
+                    ...state.trending_movie,
+                    results: [...state.trending_movie?.results, ...action.payload.results]
+                } : action.payload
                 state.isSuccess = true
 
             })
@@ -86,27 +92,28 @@ const movieSlice = createSlice({
 export const { darkmode } = movieSlice.actions
 
 export default movieSlice.reducer
-export const upcoming = createAsyncThunk("FETCH/UP", async () => {
+export const upcoming = createAsyncThunk("FETCH/UP", async (pageNum) => {
     try {
-        const response = await upcomingMovie()
+        const response = await upcomingMovie(pageNum)
         return response
     } catch (error) {
         console.log(error);
     }
 })
 
-export const popularMovies = createAsyncThunk("FETCH/POPULAR", async () => {
+export const popularMovies = createAsyncThunk("FETCH/POPULAR", async (pageNum) => {
+
     try {
-        const response = await popular()
+        const response = await popular(pageNum)
         return response
     } catch (error) {
         console.log(error);
     }
 })
 
-export const trendingMovies = createAsyncThunk("FETCH/TRENDING", async () => {
+export const trendingMovies = createAsyncThunk("FETCH/TRENDING", async (pageNum) => {
     try {
-        const response = await trending()
+        const response = await trending(pageNum)
         return response
     } catch (error) {
         console.log(error);

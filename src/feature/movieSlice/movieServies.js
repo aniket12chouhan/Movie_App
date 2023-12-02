@@ -8,22 +8,20 @@ const config = {
     },
 };
 
-export const upcomingMovie = async () => {
-
-    const res = await axios.get(`${API_URL}/movie/upcoming?language=en-US&page=1`, config)
+export const upcomingMovie = async (pageNum) => {
+    console.log(pageNum);
+    const res = await axios.get(`${API_URL}/movie/upcoming?language=en-US&page=${pageNum}`, config)
     // localStorage.setItem("upcoming", JSON.stringify(res.data))
     return res.data
 }
-export const popular = async () => {
+export const popular = async (pageNum) => {
 
-
-    const res = await axios.get(`${API_URL}/movie/popular?language=en-US&page=1`, config)
+    const res = await axios.get(`${API_URL}/movie/popular?language=en-US&page=${pageNum}`, config)
     return res.data
 }
-export const trending = async () => {
-
-    const res = await axios.get(`${API_URL}/trending/movie/day?language=en-US&page=1`, config)
-    console.log(res)
+export const trending = async (pageNum) => {
+    console.log(pageNum);
+    const res = await axios.get(`${API_URL}/trending/movie/day?language=en-US&page=${pageNum}`, config)
     return res.data
 }
 
