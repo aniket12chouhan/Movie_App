@@ -2,7 +2,6 @@ import React from 'react'
 import CardItem from '../utils/CardItem'
 
 const MovieCard = ({ upcoming_movie, title }) => {
-    console.log(title);
     return (
         <>
             <h1 className='pb-5 ms-2 text-2xl'>{title} Movies :-</h1>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkN2MwMGM0MTU0NDNhZWY3NDhlNWYwMDdkMjE5OWUyNSIsInN1YiI6IjY1NjcxNTE2ODlkOTdmMDBlMTczN2ViZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ODMQiu3mfYSD-p9QwDDLVJqYNv0JXEoeoipJzU4QjWQ"
+const token = import.meta.env.VITE_APP_TOKEN
 const API_URL = "https://api.themoviedb.org/3/"
 const config = {
     headers: {
