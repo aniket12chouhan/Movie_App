@@ -12,8 +12,7 @@ const Search = () => {
     const { search_movie } = useSelector(state => state.movie)
     const dispatch = useDispatch()
     const { query } = useParams()
-    // const [pageNum, setPageNum] = useState(2);
-
+    console.log(search_movie);
     const [textSearch, settextSearch] = useState({
         query,
         pageNum: 2
@@ -22,10 +21,6 @@ const Search = () => {
 
 
 
-    // const fetchInitialData = () => {
-    //     dispatch(popularMovies(pageNum))
-    //     setPageNum((prev) => prev + 1);
-    // }
 
     const fetchNextPageData = () => {
 
@@ -34,7 +29,6 @@ const Search = () => {
             ...textSearch,
             pageNum: textSearch.pageNum + 1
         })
-        // setPageNum((prev) => prev + 1);
 
     }
 

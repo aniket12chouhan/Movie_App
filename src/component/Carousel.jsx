@@ -1,4 +1,5 @@
 import React from 'react'
+import dayjs from 'dayjs';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useSelector } from 'react-redux'
@@ -54,7 +55,7 @@ const Carousel = () => {
                                 </div>
                                 <div className="pt-6 pb-6 px-2">
                                     <p className="text-lg text-gray-600">Language:-{upcoming.original_language}</p>
-                                    <h1 className="text-xl font-medium text-gray-700">Release date :- {upcoming.release_date}</h1>
+                                    <h1 className="text-xl font-medium text-gray-700">Release date :-   {dayjs(upcoming.release_date).format("MMM D, YYYY")}</h1>
                                     <p className="mt-1 text-xl font-normal text-[#050505]">Discription :-</p>
                                     <p className="mt-1 text-lg text-[#1e1e1e]">{upcoming.overview}</p>
 

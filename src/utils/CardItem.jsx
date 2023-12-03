@@ -1,18 +1,21 @@
 import React from 'react'
+import dayjs from 'dayjs';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { useSelector } from 'react-redux'
-import img_not from '../../public/image-not.png'
+import img_not from '../../public/poster-holder.jpg'
+import Genres from './Genres';
+import { useNavigate } from 'react-router-dom';
 
 const CardItem = ({ movie }) => {
     const { imgurl, isSuccess } = useSelector(state => state.movie)
-
-    const urlimg = (movie && imgurl) ? `${imgurl}${movie.poster_path}` : img_not
-
+    const navigate = useNavigate()
+    const urlimg = (movie.poster_path && imgurl) ? `${imgurl}${movie.poster_path}` : img_not
+    console.log(movie);
     if (isSuccess) {
         return (
             <>
-                <div className="max-w-sm rounded overflow-hidden shadow-l">
+                <div className="max-w-sm rounded overflow-hidden shadow-l cursor-pointer" onClick={() => navigate(`/movie/${movie.id}`)}>
                     <div className=" relative">
                         <img className="w-full rounded-[12px] " src={urlimg} alt="img" />
                         <div className="absolute  sm:right-4 sm:bottom-4 right-2 bottom-2 w-12 h-12  rounded-full  shadow-lg   bg-gray-100 font-bold flex flex-col items-center">
@@ -33,11 +36,11 @@ const CardItem = ({ movie }) => {
 
 
                     </div>
-                    <div className="  md:font-bold font-semibold md:text-xl text-lg mb-3 whitespace-nowrap mt-1">{movie.title}</div>
-                    <div className="px-1 pb-1">
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-                        <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+                    <h1 className="  md:font-bold font-semibold md:text-xl text-lg whitespace-nowrap mt-1">{movie.title}</h1>
+                    <h4 className=" text-md font-medium mt-1">Release date:- {dayjs(movie.release_date).format("MMM D, YYYY")}</h4>
+                    <div className="px-1 pb-1 mt-1">
+                        {/* <Genres data={movie.genre_ids.slice(0, 3)} /> */}
+
                     </div>
                 </div>
             </>

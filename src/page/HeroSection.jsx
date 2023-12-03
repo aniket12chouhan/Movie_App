@@ -13,6 +13,7 @@ const HeroSection = () => {
 
 
 
+
     const fetchInitialData = () => {
         dispatch(upcoming(pageNum))
         setPageNum((prev) => prev + 1);

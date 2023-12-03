@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import Button from "@mui/material/Button"
 import logo from '../../public/logo/logo.webp'
 import { useDispatch } from 'react-redux';
-import { darkmode, searchMovies, searchReset, } from '../feature/movieSlice/movieSlice';
+import { darkmode, getGenres, searchMovies, searchReset, } from '../feature/movieSlice/movieSlice';
 import { Link, useNavigate } from 'react-router-dom';
 const Hearder = () => {
     const dispatch = useDispatch()
@@ -39,10 +40,21 @@ const Hearder = () => {
     const search = () => {
         setopen((prev) => prev ? false : true)
     }
+    useEffect(() => {
+        genresCall();
+    }, []);
 
     useEffect(() => {
         dispatch(darkmode(dark))
     }, [dark])
+
+    const genresCall = async () => {
+        const apiurl = 'https://api.themoviedb.org/3/genre/movie/list?api_key=d7c00c415443aef748e5f007d2199e25'
+
+        const res = await fetch(apiurl)
+        const data = await res.json()
+        dispatch(getGenres(data.genres));
+    };
 
     return (
         <>
@@ -67,7 +79,11 @@ const Hearder = () => {
                                 Trending
                             </Link>
                             <div className='cursor-pointer' onClick={() => search()}>
-                                <SearchIcon />
+
+                                {
+                                    open ? <CloseIcon /> : <SearchIcon />
+                                }
+
                             </div>
 
                             {
@@ -111,21 +127,6 @@ const Hearder = () => {
                                     </div>
                                 </form>
                             </div>
-
-
-                            {/* <form className='md:mt-0 mt-2' >
-                                <div className="">
-                                    <span className='flex md:ml-0 ml-16' >
-                                        <span className="mr-2 w-full">
-                                            <input type="text"
-                                                name="text"
-                                                id="text"
-
-                                                autoComplete="off" className="block w-full  rounded-md border-0 py-1.5 text-gray-900 outline-none px-2 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-brightColor sm:text-sm sm:leading-6 float-left" />
-                                        </span>
-                                    </span>
-                                </div>
-                            </form> */}
 
                         </nav>
 

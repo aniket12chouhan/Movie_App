@@ -28,6 +28,16 @@ export const search = async (textsearch) => {
     const res = await axios.get(`${API_URL}/search/movie?query=${textsearch.query}&page=${textsearch.pageNum}`, config)
     return res.data
 }
+
+export const detail = async (id) => {
+    console.log(id);
+    const res = await axios.get(`${API_URL}/movie/${id}`, config)
+    console.log(res);
+    return res.data
+}
+//
+// https://api.themoviedb.org/3/movie/{movie_id}
+// https://api.themoviedb.org/3/movie/{movie_id}/credits
 // https://api.themoviedb.org/3/search/multi?query=xcxc
 // 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
