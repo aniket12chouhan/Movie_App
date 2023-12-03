@@ -31,7 +31,21 @@ const Search = () => {
         })
 
     }
+    if (!search_movie) {
+        return <Loader />
+    }
+    if (search_movie.results.length === 0) {
+        return (
+            <div className="w-full  flex flex-col items-center   bg-[#EEEEEE]  text-[black]  dark:bg-[#331D2C] dark:text-white " >
+                <div className='wrapper-container w-full'>
+                    <section className=' min-h-[100vh] flex flex-col items-center justify-center'>
+                        <h1 className="text-4xl mb-[150px]">No results match</h1>
 
+                    </section>
+                </div>
+            </div>
+        )
+    }
 
 
     return (

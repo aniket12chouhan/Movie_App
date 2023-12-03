@@ -10,9 +10,8 @@ const DetailPage = () => {
     const dipatch = useDispatch()
 
     useEffect(() => {
-        console.log(id);
         dipatch(detailMovies(id))
-    })
+    }, [])
     return (
         <> <div className="w-full  flex flex-col items-center   bg-[#EEEEEE]  text-[black]  dark:bg-[#331D2C] dark:text-white mt-16 py-8" >
             <div className='wrapper-container w-full bg-[]'>

@@ -11,7 +11,6 @@ const CardItem = ({ movie }) => {
     const { imgurl, isSuccess } = useSelector(state => state.movie)
     const navigate = useNavigate()
     const urlimg = (movie.poster_path && imgurl) ? `${imgurl}${movie.poster_path}` : img_not
-    console.log(movie);
     if (isSuccess) {
         return (
             <>

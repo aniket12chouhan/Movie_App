@@ -7,6 +7,7 @@ import Popular from './page/Popular'
 import Trending from './page/Trending'
 import Search from './page/Search'
 import DetailPage from './page/DetailPage'
+import PageNote from './page/PageNote'
 
 const App = () => {
   const { isDark } = useSelector(state => state.movie)
@@ -23,6 +24,7 @@ const App = () => {
             <Route path='/trending' element={<Trending />} />
             <Route path='/search/:query' element={<Search />} />
             <Route path='/movie/:id' element={<DetailPage />} />
+            <Route path='*' element={<PageNote />} />
           </Routes>
         </div>
       </div>
