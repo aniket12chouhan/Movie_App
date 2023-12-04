@@ -38,7 +38,7 @@ const CardItem = ({ movie }) => {
                     <h1 className="  md:font-bold font-semibold md:text-xl text-lg whitespace-nowrap mt-1">{movie.title}</h1>
                     <h4 className=" text-md font-medium mt-1">Release date:- {dayjs(movie.release_date).format("MMM D, YYYY")}</h4>
                     <div className="px-1 pb-1 mt-1">
-                        {/* <Genres data={movie.genre_ids.slice(0, 3)} /> */}
+                        <Genres data={movie.genre_ids.slice(0, 3)} />
 
                     </div>
                 </div>
