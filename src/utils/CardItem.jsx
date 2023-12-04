@@ -11,10 +11,14 @@ const CardItem = ({ movie }) => {
     const { imgurl, isSuccess } = useSelector(state => state.movie)
     const navigate = useNavigate()
     const urlimg = (movie.poster_path && imgurl) ? `${imgurl}${movie.poster_path}` : img_not
+    const detail = () => {
+        console.log(`${movie.id}`);
+        navigate(`/movie/${movie.id}`)
+    }
     if (isSuccess) {
         return (
             <>
-                <div className="max-w-sm rounded overflow-hidden shadow-l cursor-pointer" onClick={() => navigate(`/movie/${movie.id}`)}>
+                <div className="max-w-sm rounded overflow-hidden shadow-l cursor-pointer" onClick={() => detail()}>
                     <div className=" relative">
                         <img className="w-full rounded-[12px] " src={urlimg} alt="img" />
                         <div className="absolute  sm:right-4 sm:bottom-4 right-2 bottom-2 w-12 h-12  rounded-full  shadow-lg   bg-gray-100 font-bold flex flex-col items-center">

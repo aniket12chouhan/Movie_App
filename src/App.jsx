@@ -26,6 +26,7 @@ const App = () => {
             <Route path='/movie/:id' element={<DetailPage />} />
             <Route path='*' element={<PageNote />} />
           </Routes>
+
         </div>
       </div>
     </BrowserRouter>

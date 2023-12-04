@@ -24,15 +24,13 @@ export const trending = async (pageNum) => {
 }
 
 export const search = async (textsearch) => {
-    console.log(textsearch.pageNum);
+
     const res = await axios.get(`${API_URL}/search/movie?query=${textsearch.query}&page=${textsearch.pageNum}`, config)
     return res.data
 }
 
 export const detail = async (id) => {
-    console.log(id);
     const res = await axios.get(`${API_URL}/movie/${id}`, config)
-    console.log(res);
     return res.data
 }
 //

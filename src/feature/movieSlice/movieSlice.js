@@ -162,7 +162,7 @@ export const trendingMovies = createAsyncThunk("FETCH/TRENDING", async (pageNum)
 })
 
 export const searchMovies = createAsyncThunk("FETCH/SEARCH", async (textsearch) => {
-    console.log(textsearch);
+
     try {
         const response = await search(textsearch)
         return response
@@ -172,7 +172,6 @@ export const searchMovies = createAsyncThunk("FETCH/SEARCH", async (textsearch) 
 })
 
 export const detailMovies = createAsyncThunk("FETCH/DETAIL", async (id) => {
-    console.log(id);
     try {
         const response = await detail(id)
         return response

@@ -3,13 +3,9 @@ import { useSelector } from 'react-redux';
 
 const Genres = ({ data }) => {
     const { genres } = useSelector(state => state.movie)
-    console.log(data);
-    console.log(genres);
 
-    data.map((id) => {
-        const genre = genres.find((g) => g.id == id)
-        console.log(genre);
-    })
+
+
     return (
         <div className="genres">
             {

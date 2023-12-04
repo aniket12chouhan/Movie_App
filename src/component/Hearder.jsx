@@ -112,7 +112,7 @@ const Hearder = () => {
                                                 value={query}
                                                 placeholder='Millions of movies, To discover. Explore now.'
                                                 autoComplete="off" className="block w-full   border-0
-                                                h-14 py-3 text-gray-900 outline-none sm:px-5 px-2 shadow-sm  placeholder:text-[#2b2b2b]  
+                                                h-14 py-3 text-gray-900 outline-none sm:px-5 px-2 shadow-sm  placeholder:text-[#838383]  
                                               placeholder:text-[16px] text-[16px]
                                                 " />
                                         </span>

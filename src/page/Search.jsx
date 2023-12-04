@@ -12,7 +12,7 @@ const Search = () => {
     const { search_movie } = useSelector(state => state.movie)
     const dispatch = useDispatch()
     const { query } = useParams()
-    console.log(search_movie);
+
     const [textSearch, settextSearch] = useState({
         query,
         pageNum: 2
