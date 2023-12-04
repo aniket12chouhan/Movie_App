@@ -12,7 +12,7 @@ const CardItem = ({ movie }) => {
     const navigate = useNavigate()
     const urlimg = (movie.poster_path && imgurl) ? `${imgurl}${movie.poster_path}` : img_not
     const detail = () => {
-        console.log(`${movie.id}`);
+
         navigate(`/movie/${movie.id}`)
     }
     if (isSuccess) {

@@ -12,8 +12,6 @@ const Detail = () => {
     const { imgurl, detail_movie } = useSelector(state => state.movie)
 
     const bgurl = (detail_movie?.backdrop_path && imgurl) ? `${imgurl}${detail_movie?.backdrop_path}` : img_not
-    const { id } = useParams()
-    const dipatch = useDispatch()
 
 
     if (!detail_movie) {
